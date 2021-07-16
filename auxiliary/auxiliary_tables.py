@@ -68,7 +68,7 @@ def table1(df):
 
 #table2 - panel 1
 def distr_store_type(data_NJ,data_PA):
-     '''
+    '''
     replication Table 2 - panel 1
     
     argument:subset for New Jersey, subset for Pennsilvanya
