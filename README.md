@@ -64,8 +64,8 @@ The notebook [example_project.ipynb](https://github.com/OpenSourceEconomics/ose-
 
 Lindo et al. (2010) examine the effects of academic probation on student outcomes using a regression discontinuity design. The analysis is based on data from a large Canadian university and evaluates whether academic probation is successful in improving the performance of low scoring students. Consistent with a model of performance standards, the authors find that being placed on probation in the first year of university induces some students to drop out of school while it improves the grades of students who continue their studies. In a more general sense, academic probation can offer insights into how agents respond to negative incentives and the threat of punishment in a real-world context.
 # 
-</a> 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/blob/master/LICENSE)] 
-</a>
+ 
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/blob/master/LICENSE)] 
+
 
 ![ci](https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/actions/workflows/ci.yml/badge.svg)
