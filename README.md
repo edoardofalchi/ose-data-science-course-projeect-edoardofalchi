@@ -6,13 +6,13 @@ This is a template for course projects. We use [GitHub Classroom](https://classr
 
 Please ensure that a brief description of your project is included in the [README.md](https://github.com/HumanCapitalAnalysis/template-course-project/blob/master/README.md), which provides a proper citation of your baseline article. Also, please set up the following badges that allow to easily access your project notebook.
 
-<a href="https://nbviewer.jupyter.org/github/OpenSourceEconomics/ose-template-course-project/blob/master/example_project.ipynb"
+<a href="https://nbviewer.jupyter.org/github/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/blob/master/Card_Krueger_1994.ipynb"
    target="_parent">
    <img align="center"
   src="https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.png"
       width="109" height="20">
 </a>
-<a href="https://mybinder.org/v2/gh/OpenSourceEconomics/ose-template-course-project/master?filepath=example_project.ipynb"
+<a href="https://mybinder.org/v2/gh/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/master?filepath=Card_Krueger_1994.ipynb"
     target="_parent">
     <img align="center"
        src="https://mybinder.org/badge_logo.svg"
@@ -63,3 +63,9 @@ The notebook [example_project.ipynb](https://github.com/OpenSourceEconomics/ose-
 * Lindo, J. M., Sanders, N. J., & Oreopoulos, P. (2010). [Ability, Gender, and Performance Standards: Evidence from Academic Probation](https://www.aeaweb.org/articles?id=10.1257/app.2.2.95). *American Economic Journal: Applied Economics*, 2(2), 95-117.
 
 Lindo et al. (2010) examine the effects of academic probation on student outcomes using a regression discontinuity design. The analysis is based on data from a large Canadian university and evaluates whether academic probation is successful in improving the performance of low scoring students. Consistent with a model of performance standards, the authors find that being placed on probation in the first year of university induces some students to drop out of school while it improves the grades of students who continue their studies. In a more general sense, academic probation can offer insights into how agents respond to negative incentives and the threat of punishment in a real-world context.
+# 
+ 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/blob/master/LICENSE)
+
+
+![ci](https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/actions/workflows/ci.yml/badge.svg)
