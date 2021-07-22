@@ -75,9 +75,9 @@ Lindo et al. (2010) examine the effects of academic probation on student outcome
 To ensure the reproducibility of the project, the repository is supported by a GitHub Actions Continuos Integration (CI). The state of my workflow can be found here:
 
 </a>
-<a href="https://github.com/OpenSourceEconomics/ose-data-science-course-project-edoardofalchi/actions/workflows/ci.yml"
+<a href="https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/actions/workflows/ci.yml"
     target="_parent">
     <img align="center"
-       src="https://github.com/OpenSourceEconomics/ose-data-science-course-project-edoardofalchi/actions/workflows/ci.yml/badge.svg"
+       src="https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/actions/workflows/ci.yml/badge.svg"
        width="200" height="20">
 </a>
