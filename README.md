@@ -1,10 +1,10 @@
-# OSE data science project template
+# OSE data science final project | Edoardo Falchi | Summersemester 2021
 
-This is a template for course projects. We use [GitHub Classroom](https://classroom.github.com) to administrate our student projects and so you need to sign up for a [GitHub Account](http://github.com).
+**Card, David, and Alan Krueger. (1994)** [“Minimum Wages and Employment: A Case Study of the Fast-Food Industry in New Jersey and Pennsylvania.”](https://www.nber.org/papers/w4509) American Economic Review 84: 772–93.
 
-## Project overview
+David Card and Alan B. Krueger reported evidence that called into question the conventional view of the labor-market effects of minimum-wage laws. In particular, they surveyed fast-food establishments in New Jersey and Pennsylvania in 1992 before and after the minimum wage in New Jersey rose from $4.25 to $5.05. By comparing the changes in employment in these two states, they constructed a simple “difference-in-differences” test of the prediction that minimum-wage increases reduce employment of affected workers. Contrary to this prediction, they find “no evidence that the rise in New Jersey’s minimum wage reduced employment at fast-food restaurants in the state ...” and in fact that “the increase in the minimum wage increased employment”.
 
-Please ensure that a brief description of your project is included in the [README.md](https://github.com/HumanCapitalAnalysis/template-course-project/blob/master/README.md), which provides a proper citation of your baseline article. Also, please set up the following badges that allow to easily access your project notebook.
+
 
 <a href="https://nbviewer.jupyter.org/github/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/blob/master/Card_Krueger_1994.ipynb"
    target="_parent">
@@ -19,26 +19,10 @@ Please ensure that a brief description of your project is included in the [READM
        width="109" height="20">
 </a>
 
-## Reproducibility
-
-To ensure full reproducibility of your project, please try to set up a [GitHub Actions CI](https://docs.github.com/en/actions) as your continuous integration service. An introductory tutorial for [conda](https://conda.io) and [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions) is provided [here](https://github.com/OpenSourceEconomics/ose-template-course-project/blob/master/tutorial_conda_actions.ipynb). While not at all mandatory, setting up a proper continuous integration workflow is an extra credit that can improve the final grade.
 
 
 
-In some cases you might not be able to run parts of your code on  [GitHub Actions CI](https://docs.github.com/en/actions) as, for example, the computation of results takes multiple hours. In those cases you can add the result in a file to your repository and load it in the notebook. See below for an example code.
 
-```python
-# If we are running on GitHub Actions CI we will simply load a file with existing results.
-if os.environ.get("CI") == "true":
-  rslt = pkl.load(open('stored_results.pkl', 'br'))
-else:
-  rslt = compute_results()
-
-# Now we are ready for further processing.
-...
-```
-
-However, if you decide to do so, please be sure to provide an explanation in your notebook explaining why exactly this is required in your case.
 
 ## Structure of notebook
 
@@ -56,14 +40,7 @@ A typical project notebook has the following structure:
 
 There might be good reason to deviate from this structure. If so, please simply document your reasoning and go ahead. Please use the opportunity to review other student projects for some inspirations as well.
 
-## Project Example
 
-The notebook [example_project.ipynb](https://github.com/OpenSourceEconomics/ose-template-course-project/blob/master/example_project.ipynb) contains an example project by [Annica Gehlen](https://github.com/amageh) from the 2019 iteration of the [OSE data science](https://github.com/OpenSourceEconomics/ose-course-data-science) class at Bonn University. It replicates the results from the following paper:
-
-* Lindo, J. M., Sanders, N. J., & Oreopoulos, P. (2010). [Ability, Gender, and Performance Standards: Evidence from Academic Probation](https://www.aeaweb.org/articles?id=10.1257/app.2.2.95). *American Economic Journal: Applied Economics*, 2(2), 95-117.
-
-Lindo et al. (2010) examine the effects of academic probation on student outcomes using a regression discontinuity design. The analysis is based on data from a large Canadian university and evaluates whether academic probation is successful in improving the performance of low scoring students. Consistent with a model of performance standards, the authors find that being placed on probation in the first year of university induces some students to drop out of school while it improves the grades of students who continue their studies. In a more general sense, academic probation can offer insights into how agents respond to negative incentives and the threat of punishment in a real-world context.
-# 
  
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/blob/master/LICENSE)
 
