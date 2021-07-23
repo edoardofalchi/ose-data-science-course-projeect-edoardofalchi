@@ -23,7 +23,7 @@ Please ensure that a brief description of your project is included in the [READM
 
 To ensure full reproducibility of your project, please try to set up a [GitHub Actions CI](https://docs.github.com/en/actions) as your continuous integration service. An introductory tutorial for [conda](https://conda.io) and [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions) is provided [here](https://github.com/OpenSourceEconomics/ose-template-course-project/blob/master/tutorial_conda_actions.ipynb). While not at all mandatory, setting up a proper continuous integration workflow is an extra credit that can improve the final grade.
 
-![Continuous Integration](https://github.com/OpenSourceEconomics/ose-template-course-project/workflows/Continuous%20Integration/badge.svg)
+
 
 In some cases you might not be able to run parts of your code on  [GitHub Actions CI](https://docs.github.com/en/actions) as, for example, the computation of results takes multiple hours. In those cases you can add the result in a file to your repository and load it in the notebook. See below for an example code.
 
@@ -69,3 +69,15 @@ Lindo et al. (2010) examine the effects of academic probation on student outcome
 
 
 ![ci](https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/actions/workflows/ci.yml/badge.svg)
+
+</a>
+
+To ensure the reproducibility of the project, the repository is supported by a GitHub Actions Continuos Integration (CI). The state of my workflow can be found here:
+
+</a>
+<a href="https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/actions/workflows/ci.yml"
+    target="_parent">
+    <img align="center"
+       src="https://github.com/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/actions/workflows/ci.yml/badge.svg"
+       width="200" height="20">
+</a>
