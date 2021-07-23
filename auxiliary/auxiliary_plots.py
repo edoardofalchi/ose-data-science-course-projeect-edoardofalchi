@@ -117,3 +117,107 @@ def figures(df_before,df_after,sel_var):
     plt.pyplot.title('November 1992')
 
     return plt.pyplot.show()
+
+
+
+def lmplot(df,y):
+    
+    '''
+    arguments:dataset,outcome variable
+    return:regression plot condition on a third variable (i.e. restaurant chain) across different columns
+    
+    '''
+    df['chains']=df['chain'].replace({1: 'Burger King', 2: 'KFC', 3: 'Roy Rogers', 4: 'Wendys'})#assign a name to each category
+    
+    fig = sns.lmplot(x='GAP', y = y, hue='chains',col='chains', col_wrap=2, aspect=1, x_jitter=.05,
+                         data = df)
+    x=''
+    if 'change_in_log_price' in df.columns:
+        x='change in log price'
+    else:
+        x='change in FTE'
+
+    fig.set_axis_labels('GAP wage',x)
+    
+    pltpy.show(fig)
+    
+    
+    
+def get_shares_chain_stores():
+    '''
+    generate pie chart of chain stores distribution across state
+    based on figures of 'table 2 - panel 1'
+    '''
+    labels = ["Burger King", "KFC", "Roy Rogers","Wendy's"]
+
+    fig, (ax1, ax2) = pltpy.subplots(1, 2)
+    ax1.pie([41.09, 20.54, 24.77,13.60], labels=labels, autopct="%1.2f%%")
+    ax1.set_title("NJ")
+    ax2.pie([44.30, 15.19, 21.52,18.99], labels=labels, autopct="%1.2f%%")
+    ax2.set_title("PA")
+    fig.tight_layout()
+    
+
+    
+def get_common_support(df_control,df_treated):
+    '''
+    arguments:dataset for control group, dataset for treated group
+    return:plot histohram of wage with kernel distribution
+    '''
+    bins=np.arange(4.05, 5.85, 0.10)
+    fig=sns.histplot(data=df_treated,x='wage_st', bins=bins, label='treated', kde=True,color='blue',element="step")
+    fig=sns.histplot(data=df_control,x='wage_st', bins=bins, label='control', kde=True,color='orange',element="step")
+    fig.set_xlim([4, 5.75])
+    fig.set_xlabel("wage range")
+    fig.legend()    
+    
+    
+    
+    
+def get_common_support2(df_control, df_treated):
+
+    fig, ax = pltpy.subplots(1, 1)
+    bins=np.arange(4.05, 5.85, 0.10)
+    ax.hist([df_control.wage_st, df_treated.wage_st], bins=bins, label=["control", "treated"])
+    ax.set_xlim([4, 5.75])
+    ax.set_xlabel("wage range")
+    ax.legend()
+    
+    
+def scatter_corr(df,var1,var2):
+    '''
+    argument: dataset, x-axis variable, y-axis variable
+    return:scatter plot with Pearson correlation coeff
+    '''
+    sns.jointplot(x=var1, y=var2, data=df)
+    df_dropna=df[[var1,var2]].dropna()
+
+    stat = scipy.stats.pearsonr(df_dropna[var1], df_dropna[var2])[0]#we are just interesting in the firs value from the output of pearsonr command
+    print(f"The Pearson correlation coefficient is {stat:7.3f}")
+    
+    
+    
+    
+def bar_chart_wage(df1,df2):
+    
+    low_pre=df1.loc[(df1['wage_st']==4.25),'FTE'].mean()
+    high_pre=df1.loc[(df1['wage_st']>=5),'FTE'].mean()
+    low_post=df2.loc[(df2['wage_st']==4.25) & (df2['state']==1),'FTE2'].mean()
+    high_post=df2.loc[(df2['wage_st']>=5) & (df2['state']==1),'FTE2'].mean()
+
+    data = [[low_pre, high_pre],
+    [low_post, high_post]]
+    X = np.arange(2)
+    fig = pltpy.figure()
+    ax = fig.add_axes([0,0,1,1])
+    ax.bar(X + 0.00, data[0], color = 'b', width = 0.25)
+    ax.bar(X + 0.25, data[1], color = 'r', width = 0.25)
+    # Add some text for labels, title and custom x-axis tick labels, etc
+    ax.set_ylabel('Average FTE Employment')
+    ax.set_title('Average FTE Employment in Low- and High-wage areas of New Jersey, before and after 1992 minimum wage increase')
+    ax.set_xticks(([0.12, 1.12]))
+    ax.set_xticklabels(['Low Wage','High Wage'])
+    ax.set_yticks(np.arange(4, 26, 4))
+    ax.legend(labels=['Feb-Mar', 'Nov-Dec'], loc='best')
+    fig.tight_layout()
+    pltpy.show()
