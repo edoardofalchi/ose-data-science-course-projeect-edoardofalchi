@@ -15,6 +15,8 @@ import matplotlib.pyplot as pltpy
 from IPython.display import HTML
 from stargazer.stargazer import Stargazer
 import math
+import linearmodels as lm
+from linearmodels import PanelOLS
 
 
 from auxiliary.auxiliary_plots import *
@@ -579,7 +581,7 @@ def get_table5(df_tab5,df_extended):
     gap_coef4.append(fit.params[1])
     gap_se4.append(fit.bse[1])
 
-    ###row6 exclude stores in NJ shore area###
+    ###row6 exclude stores in NJ shore ###
     df_tab5_row6=df_extended.copy()
     #Sample excludes 35 stores located in towns along the New Jersey shore.
     df_tab5_row6=df_tab5_row6[(df_tab5_row6.shore==0)]
@@ -929,3 +931,90 @@ def get_table6_panel2(df_tab6):
  
     print('Regression of change in outcome variable on:')
     return  table6_2
+
+
+
+
+def table_Michl(df,df_NJ_0,df_NJ_1,df_PA_0,df_PA_1):
+    
+    df['FT/FTE']     = df.empft / df.FTE
+    df['FT+PT']      = df.empft + df.emppt
+    df['FT/(FT+PT)'] = df.empft/(df.empft + df.emppt)
+    
+    df_NJ_0= df[(df["state"]==1) & (df["time"]==0)]
+    df_NJ_1= df[(df["state"]==1) & (df["time"]==1)]
+    df_PA_0= df[(df["state"]==0) & (df["time"]==0)]
+    df_PA_1= df[(df["state"]==0) & (df["time"]==1)]
+   
+    variables=['FTE','FT/FTE','FT+PT','FT/(FT+PT)']
+    NJ= pd.DataFrame()
+    PA= pd.DataFrame()
+    
+
+    NJ['Wave 1 (mean)']= df_NJ_0[variables].mean()
+    NJ['Wave 1 (std.dev)']= df_NJ_0[variables].std()
+    NJ['Wave 2 (mean)']= df_NJ_1[variables].mean()
+    NJ['Wave 2 (std.dev)']= df_NJ_1[variables].std()
+    
+    PA['Wave 1 (mean)']= df_PA_0[variables].mean()
+    PA['Wave 1 (std.dev)']= df_PA_0[variables].std()
+    PA['Wave 2 (mean)']= df_PA_1[variables].mean()
+    PA['Wave 2 (std.dev)']= df_PA_1[variables].std()
+    
+   
+    table3_Michl = pd.concat([NJ, PA], axis=1)
+    table3_Michl.columns = pd.MultiIndex.from_product([['New Jersey', 'Pennsylvania'],
+                                                ['Wave 1 (mean)', 'Wave 1 (std.dev)','Wave 2 (mean)', 'Wave 2 (std.dev)']])
+   
+
+    table3_Michl = table3_Michl.astype(float).round(3)
+
+
+    print("Fraction Full-Time and Total Workers in NJ and PA Restaurants")
+    return table3_Michl
+
+
+
+def corr_Michl(df,df_before, df_after):
+    df_before= df[df["time"]==0]
+    df_after= df[df["time"]==1]
+
+    df_before['FT/FTE']     = df_before.empft / df_before.FTE
+    df_after['FT/FTE']     = df_after.empft / df_after.FTE
+    df_before['FT+PT']      = df_before.empft + df_before.emppt
+    df_after['FT+PT']      = df_after.empft + df_after.emppt
+    df_before['FT/(FT+PT)'] = df_before.empft/(df_before.empft + df_before.emppt)
+    df_after['FT/(FT+PT)'] = df_after.empft/(df_after.empft + df_after.emppt)
+
+    corr = pd.DataFrame([[df_before['FT/FTE'].corr(df_before['FTE']),
+                      df_after['FT/FTE'].corr(df_after['FTE']),
+                      df_before['FT/(FT+PT)'].corr(df_before['FT+PT']),
+                     df_after['FT/(FT+PT)'].corr(df_after['FT+PT'])]],
+                    columns = ['FTE vs FT/FTE (wave 1)', 'FTE vs FT/FTE (wave 2)',
+                               'FT+PT vs FT/(FT+PT) (wave 1)', 'FT+PT vs FT/(FT+PT) (wave 2)'],
+                      index = ['Correlation'])
+    corr = round(corr,3)
+    return corr
+
+
+def placebo(df):
+    '''
+    Perform placebo test:regress high wages on policy treatment (we should check its insignificance)
+    
+    arguments:dataset
+    return:DiD pvalue from full sample and balanced sample models
+    '''
+    df_placebo_full_sample=df
+    df_placebo_sample_balanced=df[(df.FTE.notna())]
+    par_pv=[]
+    for i in [df_placebo_full_sample,df_placebo_sample_balanced]:
+        
+        i["nj_after"] = i.state * i.time
+        i['high_wage']= i.loc[(i['wage_st']>=5) ,'FTE']#high wages should not be affected bY the policy
+        i = i.set_index(['store','time'])
+        result=lm.PanelOLS.from_formula('high_wage ~ nj_after + EntityEffects +TimeEffects ',i).fit(cov_type = 'clustered',cluster_entity = True, cluster_time=True)
+        par_pv.append(result.params[0])
+        par_pv.append(result.pvalues[0])
+    print(f'Dif-in-dif coefficient  for the full sample is {par_pv[0]:.3f} and it has pvalue {par_pv[1]:.3f}')
+    print(f'Dif-in-dif coefficient  for the balanced sample is {par_pv[2]:.3f} and it has pvalue {par_pv[3]:.3f}')
+  
