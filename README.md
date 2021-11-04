@@ -8,7 +8,7 @@ David Card and Alan B. Krueger reported evidence that called into question the c
 
 The replication is carried on the main notebook from this repository. The auxiliary folder contains different functions made for the data preparation, regressions and tables, plots, as well as some extra visualizations and extensions. The replication can also be visualized using nbviewer and mybinder:
 
-<a href="https://nbviewer.jupyter.org/github/OpenSourceEconomics/ose-data-science-course-projeect-edoardofalchi/blob/master/Card_Krueger_1994.ipynb"
+<a href="https://nbviewer.org/github/edoardofalchi/ose-data-science-course-projeect-edoardofalchi/blob/master/Card_Krueger_1994.ipynb"
    target="_parent">
    <img align="center"
   src="https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.png"
