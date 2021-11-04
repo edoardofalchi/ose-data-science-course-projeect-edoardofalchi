@@ -13,6 +13,8 @@ The replication is carried on the main notebook from this repository. The auxili
    <img align="center"
   src="https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.png"
       width="109" height="20">
+   
+   
 </a>
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/edoardofalchi/ose-data-science-course-projeect-edoardofalchi/master?labpath=Card_Krueger_1994.ipynb)
 
